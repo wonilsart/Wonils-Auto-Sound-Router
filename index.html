@@ -4,28 +4,195 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wonils Auto Sound Router</title>
+<meta name="description" content="One-click audio device switching, acoustic pairing, VR auto-switch, voice changer and soundboard — a free Windows tray utility on Steam.">
+<meta property="og:title" content="Wonils Auto Sound Router">
+<meta property="og:description" content="Your audio, on the right device, every time. Free on Steam.">
+<meta property="og:image" content="https://wonilsart.github.io/Wonils-Auto-Sound-Router/assets/hero.jpg">
 <style>
-  :root { color-scheme: dark; }
-  body {
-    background: #181A20; color: #D5D7DD;
-    font-family: "Segoe UI", system-ui, sans-serif;
-    max-width: 720px; margin: 0 auto; padding: 64px 20px 80px;
-    line-height: 1.65; text-align: center;
+  :root {
+    color-scheme: dark;
+    --bg: #0f1116;
+    --panel: #171a21;
+    --panel2: #1d212b;
+    --text: #d5d7dd;
+    --dim: #8a8f99;
+    --accent: #f2c94c;
+    --blue: #4f9cf9;
+    --green: #5fb98a;
   }
-  h1 { color: #fff; font-size: 1.8rem; }
-  p.tag { color: #8a8f99; }
-  a { color: #4F9CF9; }
-  .links { margin-top: 36px; }
-  .links a { display: inline-block; margin: 0 14px; }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    margin: 0; line-height: 1.65;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---- hero ---- */
+  .hero {
+    position: relative; text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, #1b2030 0%, var(--bg) 70%);
+    padding: 0 0 56px;
+  }
+  .hero img.banner {
+    width: 100%; max-height: 420px; object-fit: cover; display: block;
+    -webkit-mask-image: linear-gradient(#000 70%, transparent);
+            mask-image: linear-gradient(#000 70%, transparent);
+  }
+  .hero h1 { color: #fff; font-size: clamp(1.6rem, 4vw, 2.6rem); margin: 18px 16px 8px; }
+  .hero p.tag { color: var(--dim); max-width: 640px; margin: 0 auto 28px; padding: 0 20px; }
+  .btn {
+    display: inline-block; margin: 6px 8px; padding: 13px 28px; border-radius: 8px;
+    font-weight: 600; font-size: 1.02rem;
+  }
+  .btn.steam { background: var(--accent); color: #14161c; }
+  .btn.steam:hover { background: #ffd95e; text-decoration: none; }
+  .btn.ghost { border: 1px solid #3a4150; color: var(--text); }
+  .btn.ghost:hover { border-color: var(--accent); color: #fff; text-decoration: none; }
+  .hero .free { color: var(--green); font-weight: 600; font-size: .95rem; margin-top: 10px; }
+
+  /* ---- sections ---- */
+  main { max-width: 980px; margin: 0 auto; padding: 0 20px 70px; }
+  section { margin-top: 64px; }
+  h2 { color: #fff; font-size: 1.5rem; text-align: center; margin-bottom: 8px; }
+  .sub { color: var(--dim); text-align: center; max-width: 640px; margin: 0 auto 30px; }
+
+  .feature {
+    display: flex; gap: 28px; align-items: center; margin-top: 34px;
+    background: var(--panel); border: 1px solid #242a36; border-radius: 12px; padding: 22px;
+  }
+  .feature:nth-child(even) { flex-direction: row-reverse; }
+  .feature img { width: 46%; min-width: 260px; border-radius: 8px; }
+  .feature div { flex: 1; }
+  .feature h3 { color: var(--accent); margin: 0 0 8px; font-size: 1.12rem; }
+  .feature p { margin: 0; color: var(--text); font-size: .98rem; }
+  @media (max-width: 720px) {
+    .feature, .feature:nth-child(even) { flex-direction: column; }
+    .feature img { width: 100%; min-width: 0; }
+  }
+
+  /* ---- gallery ---- */
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .shots a img {
+    width: 100%; border-radius: 8px; border: 1px solid #242a36; display: block;
+    transition: transform .15s ease;
+  }
+  .shots a:hover img { transform: scale(1.02); }
+
+  /* ---- trailer ---- */
+  video { width: 100%; border-radius: 12px; border: 1px solid #242a36; display: block; }
+
+  /* ---- footer ---- */
+  footer {
+    border-top: 1px solid #242a36; padding: 30px 20px 46px;
+    text-align: center; color: var(--dim); font-size: .92rem;
+  }
+  footer a { margin: 0 12px; }
 </style>
 </head>
 <body>
-  <h1>Wonils Auto Sound Router</h1>
-  <p class="tag">One-click audio device switching, acoustic pairing, VR auto-switch,
-  voice changer and soundboard — a Windows tray utility.</p>
-  <div class="links">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="mailto:wonilsart@gmail.com">Support</a>
-  </div>
+
+<header class="hero">
+  <img class="banner" src="assets/hero.jpg" alt="Wonils Auto Sound Router">
+  <h1>Your audio, on the right device, every&nbsp;time</h1>
+  <p class="tag">One-click output and mic switching, acoustic pairing that finds the right
+  microphone by itself, VR auto-switch with crash-safe restore, a real-time voice changer,
+  a soundboard, and tinnitus-calming masking noise — all living quietly in your Windows tray.</p>
+  <a class="btn steam" href="https://store.steampowered.com/app/5024160/">Get it on Steam</a>
+  <a class="btn ghost" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3830619077">User Guide</a>
+  <div class="free">Free · Windows 10/11 · No account · No telemetry</div>
+</header>
+
+<main>
+
+  <section>
+    <h2>What it does</h2>
+    <p class="sub">Five tools, one tray icon. Everything below ships in the free app.</p>
+
+    <div class="feature">
+      <img src="assets/banner_pairing.png" alt="Acoustic pairing">
+      <div>
+        <h3>Acoustic pairing</h3>
+        <p>Not sure which mic is next to your speakers? One click plays a test chirp through
+        every output while recording with every mic at once, then ranks both lists like a
+        leaderboard — real devices rise to the top, silent and virtual ones fade to grey.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <img src="assets/banner_vr.png" alt="VR auto-switch">
+      <div>
+        <h3>VR auto-switch</h3>
+        <p>Tag your headset's output and mic, and the app switches the moment SteamVR, Meta
+        Link, Pico Connect, Virtual Desktop or WMR starts — and restores your exact desktop
+        setup when you exit, even after a crash. The tray menu counts every switch it makes
+        for you.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <img src="assets/banner_voice.png" alt="Voice changer">
+      <div>
+        <h3>Voice changer</h3>
+        <p>Pitch, a masculine↔feminine voice-type slider, robot, phone, reverb, echo, a
+        five-band EQ and one-click presets — with a three-second preview and a
+        Stay&nbsp;in&nbsp;Character lock so your real voice is never heard by accident.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <img src="assets/banner_soundboard.png" alt="Soundboard and masking noise">
+      <div>
+        <h3>Soundboard &amp; masking noise</h3>
+        <p>One-click sound buttons, a drag-and-drop library, a recorder with automatic
+        loudness leveling — plus looping white, pink or brown noise to calm tinnitus or
+        mask distractions.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <img src="assets/banner_scenes.png" alt="Scenes and hotkeys">
+      <div>
+        <h3>Scenes &amp; hotkeys</h3>
+        <p>Save output + mic combos as named scenes, assign VR and Default scenes, and
+        switch with global Ctrl+Alt+1–9 hotkeys — even while the panel is hidden.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>See it in action</h2>
+    <p class="sub">57 seconds, start to finish.</p>
+    <video src="assets/trailer.mp4" controls preload="metadata" poster="assets/01_device_switcher.jpg"></video>
+  </section>
+
+  <section>
+    <h2>Screenshots</h2>
+    <div class="shots">
+      <a href="assets/01_device_switcher.jpg" target="_blank"><img src="assets/01_device_switcher.jpg" alt="Device switcher panel" loading="lazy"></a>
+      <a href="assets/02_voice_changer_with_panel.jpg" target="_blank"><img src="assets/02_voice_changer_with_panel.jpg" alt="Voice changer" loading="lazy"></a>
+      <a href="assets/03_soundboard.jpg" target="_blank"><img src="assets/03_soundboard.jpg" alt="Soundboard" loading="lazy"></a>
+      <a href="assets/04_settings.jpg" target="_blank"><img src="assets/04_settings.jpg" alt="Settings" loading="lazy"></a>
+      <a href="assets/05_app_routes.jpg" target="_blank"><img src="assets/05_app_routes.jpg" alt="App routes" loading="lazy"></a>
+    </div>
+  </section>
+
+  <section style="text-align:center">
+    <h2>Speaks your language</h2>
+    <p class="sub">English, 简体中文, Español (EU &amp; Latam), 日本語, Русский, Português,
+    Deutsch, Français, 한국어, Türkçe, ไทย, Svenska.</p>
+    <a class="btn steam" href="https://store.steampowered.com/app/5024160/">Get it free on Steam</a>
+  </section>
+
+</main>
+
+<footer>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3830619077">User Guide</a>
+  <a href="mailto:wonilsart@gmail.com">Support</a>
+  <div style="margin-top:14px">© 2026 Wonil · Wonils Auto Sound Router is a Windows tray utility distributed on Steam.</div>
+</footer>
+
 </body>
 </html>
